@@ -1,0 +1,256 @@
+@import './variables';
+
+*{
+padding: 0;
+margin: 0;
+}
+
+
+.holder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color3;
+    height: 100vh;
+}
+
+header{
+    width: 100%;
+    background-image: url('../media/pic5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100px;
+    color:$color3;
+}
+
+header h1{
+    padding: 30px;
+}
+
+
+main{
+
+margin-top: -50px;
+z-index: 300;
+padding-top: 0;
+width: 40vw;
+height: 100vh;
+}
+
+.infos{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background: $color8;
+    border-top: 2px solid $color7;
+    border-radius: 5px;
+    color:$color3;
+}
+.card{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.todoses{
+    overflow-y: auto;
+margin-bottom: 150px;
+}
+.todosub1{
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: $color8; 
+margin: 10px 0;
+padding:20px;
+border-radius: 5px;
+}
+
+.value{
+    display: flex;
+    color:$color3;
+}
+
+.value input{
+    margin-right: 10px;
+    background:$color5;
+}
+
+.icons i{
+    color:$color5;
+    margin:0 7px;
+    cursor: pointer;
+}
+
+.todosub2{
+    display: flex;
+    align-items: center;
+    background: $color7; 
+    margin: 20px 0;
+    padding:10px 15px;
+    margin-top: -5px;
+    border-radius: 5px;
+    }
+
+.todosub2 form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todosub2 input{
+    width: 60%;
+    height: 22px;
+   flex-grow: 2;
+   border: 2px solid silver;
+   margin-right: 10px;
+   padding: 5px 8px;
+   border-radius: 5px;
+}
+
+
+.todosub2 button{
+  width: 10%;
+   flex-grow: 1;
+   background-color: $color1;
+   color: $color3;
+   border: 0px;
+   border-radius: 5px;
+}
+
+.inputs{
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:40vw;
+    border:1px solid $color5;
+}
+
+.filters{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: $color1;
+    border-radius: 3px 3px 0 0;
+    padding-top: 3px;
+    font-family:serif;
+}
+
+.filters button{
+    color:$color3;
+    border: 0;
+    border-bottom: 2px solid $color7;
+    background-color: $color1;
+   // border-radius: 5px;
+    padding:6px;
+    width:80px;
+    cursor:pointer
+}
+
+.todoadd{
+    display: flex;
+    align-items: center;
+    background: $color1; 
+    width: 100%;
+    }
+
+.todoadd form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding:10px 15px;
+
+}
+
+.todoadd input{
+    width: 60%;
+    height: 22px;
+   border: 2px solid silver;
+   margin-right: 10px;
+   padding: 5px 8px;
+   border-radius: 5px;
+   flex-grow: 2;
+}
+
+.todoadd button{
+    width: 10%;
+     flex-grow: 1;
+     background-color: $color2;
+     color: $color3;
+     border: 0px;
+     border-radius: 5px;
+  }
+
+.credit{
+    display: flex;
+    font-size: 9px;
+    flex-direction: column;
+    color:$color3;
+    background: $color1;
+    width: 100vw;
+    align-items: center;
+    font-family: font3;
+    padding: 5px;
+    padding-bottom: 10px;
+}
+.credit a{
+    text-decoration: none;
+    color: dodgerblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @media(max-width:600px){
+    main{
+        width: 90vw;
+        margin-top: -25px;
+        }   
+    .inputs{
+     width: 90vw;
+    } 
+    .infos{
+        font-size: 14px;
+    }
+    .todo{
+        font-size: 14px;
+    }
+    .inputs{
+        font-size: 12px !important;
+    }
+    .todoadd button{
+        width: 20%;
+        padding: 2px 3px ;
+    }
+    .todosub2 button{
+        width: 20%;
+        padding: 0 3px ;
+      }
+    .filters button{
+        font-size: 11px !important;
+    }
+      .todoadd input{
+       padding: 2px 8px;
+       font-size: 12px;
+    }
+
+   .todosub1 p{
+      overflow-x:auto;
+        }
+
+  }
