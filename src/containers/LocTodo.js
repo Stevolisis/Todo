@@ -1,5 +1,5 @@
 import {React} from 'react'
-import {ACTIONS} from './Localtodo'
+import ACTIONS from './Actions'
 import 'font-awesome/css/font-awesome.min.css';
 
 export default function LocTodo({todo,editedname,setEditedname,dispatch}){

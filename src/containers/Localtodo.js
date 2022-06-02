@@ -1,16 +1,7 @@
 import {React,useReducer,useState,useEffect} from 'react';
+import ACTIONS from './Actions'
 import LocTodo from './LocTodo';
-
-export const ACTIONS={
-    ADD_TODO:'add-todo',
-    TOGGLE_TODO:'toggle-todo',
-    DELETE_TODO:'delete-todo',
-    SHOW_EDIT:'show-edit',
-    EDIT_TODO:'edit-todo',
-    COMPLETED_TODO:'completed-todo',
-    INCOMPLETE_TODO:'incomplete-todo',
-    NORMAL_TODO:'normal-todo'
-}
+import reducer from './reducer'
 
 
 
@@ -22,13 +13,16 @@ export default function Localtodo(){
     const [completetodo,setCompletetodo]=useState();
     const [alltodo,setAlltodo]=useState();
 
-
-
-
 function handleSubmit(e){
     e.preventDefault();
 dispatch({type:ACTIONS.ADD_TODO, payload:{name:name}})
 setName('');
+}
+
+
+function alltodos(){
+    let localdata=JSON.parse(localStorage.getItem('localtodo'));
+    setAlltodo(localdata.length);
 }
 
 function actingtodo(){
@@ -42,12 +36,6 @@ function incompletedtodo(){
     let newlocaldata=localdata.filter(n=>n.complete===true);
     setCompletetodo(newlocaldata.length);
 }
-
-function alltodos(){
-    let localdata=JSON.parse(localStorage.getItem('localtodo'));
-    setAlltodo(localdata.length);
-}
-
 
 function done(){
     todos.map(todo=>(
@@ -66,81 +54,20 @@ function backnormal(){
         dispatch({type:ACTIONS.NORMAL_TODO ,payload:{id:todo.id,complete:todo.complete}})
     ))  
 }
-//-------------------Reducer---------------------------
+
+
+
+
+
+//-------------------Setting reducer---------------------------
 const [todos,dispatch]=useReducer(reducer,[],()=>{
     let localdata=localStorage.getItem('localtodo');
     return localdata ? JSON.parse(localdata) : []
 });
-
-
-function reducer(todos,action){
-switch(action.type){
-    case ACTIONS.ADD_TODO:
-       return [...todos,newTodo(action.payload.name)]
-
-    case ACTIONS.TOGGLE_TODO:
-       return todos.map(todo=>{
-         if(todo.id===action.payload.id){
-       return {...todo,complete: !todo.complete}
-            }
-       return todo
-            })
-
-    case ACTIONS.DELETE_TODO:
-        return todos.filter(todo=> todo.id !== action.payload.id)
-
-        case ACTIONS.SHOW_EDIT:
-            return todos.map(todo=>{
-              if(todo.id===action.payload.id){
-                    return {...todo,status: todo.status==='block' ? 'none' :'block'}
-                }
-              return todo
-                   })
-
-    case ACTIONS.EDIT_TODO:
-        return todos.map(todo=>{
-            if(todo.id===action.payload.id){
-                return {...todo,name: action.payload.name,status:'none'}
-            }
-        return todo
-               })
-
-    case ACTIONS.COMPLETED_TODO:
-        return todos.map(todo=>{
-            if(todo.id===action.payload.id){
-                return {...todo,filtered:todo.complete===true?'block':'none'}
-            }
-        return todo
-               })
-    case ACTIONS.INCOMPLETE_TODO:
-        return todos.map(todo=>{
-            if(todo.id===action.payload.id){
-                return {...todo,filtered:todo.complete===false?'block':'none'}
-            }
-        return todo
-               })
-
-    case ACTIONS.NORMAL_TODO:
-        return todos.map(todo=>{
-            if(todo.id===action.payload.id){
-                return {...todo,filtered:'block'}
-            }
-                return todo
-                })
-               
-      default:
-        return todos
-}
-
-}
-//------------------------End Reducer--------------------
+//------------------------End Setting reducer--------------------
 
 
 
-
-function newTodo(name){
-    return {id:Date.now(),name:name,complete:false,filtered:'block',status:'none'}
-}
 
     useEffect(()=>{
 localStorage.setItem('localtodo',JSON.stringify(todos));
@@ -148,6 +75,9 @@ actingtodo();
 incompletedtodo();
 alltodos();
     },[todos])
+
+
+
 
 return(
     <>
