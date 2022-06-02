@@ -217,9 +217,12 @@ border-radius: 5px;
 
 
   @media(max-width:600px){
+    header{
+   height: 150px !important;
+    }
     main{
         width: 90vw;
-        margin-top: -25px;
+        margin-top: -50px;
         }   
     .inputs{
      width: 90vw;
