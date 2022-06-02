@@ -138,7 +138,6 @@ border-radius: 5px;
     background-color: $color1;
     border-radius: 3px 3px 0 0;
     padding-top: 3px;
-    font-family:serif;
 }
 
 .filters button{
@@ -146,7 +145,7 @@ border-radius: 5px;
     border: 0;
     border-bottom: 2px solid $color7;
     background-color: $color1;
-   // border-radius: 5px;
+    font-family: serif;
     padding:6px;
     width:80px;
     cursor:pointer
