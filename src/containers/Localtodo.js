@@ -6,8 +6,8 @@ import reducer from './reducer'
 
 
 export default function Localtodo(){
-    const [name,setName]=useState();
-    const [editedname,setEditedname]=useState();
+    const [name,setName]=useState("");
+    const [editedname,setEditedname]=useState("");
 
     const [activetodo,setActivetodo]=useState();
     const [completetodo,setCompletetodo]=useState();
@@ -134,7 +134,7 @@ return <LocTodo key={todo.id} editedname={editedname} setEditedname={setEditedna
 
     <div  className='todoadd'>
     <form onSubmit={handleSubmit}>
-        <input type='text' placeholder='Add todo' value={name} onChange={e=> setName(e.target.value)}/>
+        <input required='required' type='text' placeholder='Add todo' value={name} onChange={e=> setName(e.target.value)}/>
         <button>Add</button>
     </form>
     </div>
